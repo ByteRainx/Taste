@@ -1,0 +1,35 @@
+# Git attributes for consistent line endings
+* text=auto eol=lf
+
+# Python files
+*.py text eol=lf
+
+# Markdown files
+*.md text eol=lf
+
+# YAML files
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# JSON files
+*.json text eol=lf
+
+# TOML files
+*.toml text eol=lf
+
+# Shell scripts
+*.sh text eol=lf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.pyc binary
+*.pyo binary
+*.so binary
+*.dylib binary
+*.dll binary
+*.exe binary

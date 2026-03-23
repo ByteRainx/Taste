@@ -22,10 +22,10 @@ export ANTHROPIC_API_KEY=sk-ant-...
 taste --researcher "Kaiming He"
 
 # Use Semantic Scholar author ID directly (skip disambiguation)
-taste --researcher-id 39353098
+taste --researcher_id 39353098
 
 # Save to file
-taste --researcher "Yann LeCun" --output-file lecun_taste.md
+taste --researcher "Yann LeCun" --output_file lecun_taste.md
 
 # Use a different model
 taste --researcher "Ilya Sutskever" --llm.model claude-opus-4-20250514
@@ -89,14 +89,20 @@ Not just top-N by citations. We select papers that reveal taste:
 
 ## Status
 
-🚧 **Early development** — the core pipeline works, but prompt quality is still being tuned.
+✅ **Functional and tested** — the core pipeline works, all tests pass, and has been successfully used to analyze researchers.
 
-See [ROADMAP.md](docs/ROADMAP.md) for planned features.
+See [PROJECT_STATUS.md](PROJECT_STATUS.md) for detailed status and [ROADMAP.md](docs/ROADMAP.md) for planned features.
+
+## Example
+
+Check out [examples/xiaodan_liang_taste.md](examples/xiaodan_liang_taste.md) for a complete taste profile example.
 
 ## Documentation
 
 - [CONCEPT.md](docs/CONCEPT.md) — Why research taste matters and who this is for
 - [DESIGN.md](docs/DESIGN.md) — Technical design: the 7 dimensions, paper selection, two-phase LLM analysis
+- [CLAUDE.md](CLAUDE.md) — Development guide for working with this codebase
+- [PROJECT_STATUS.md](PROJECT_STATUS.md) — Current project status and recent improvements
 - [ROADMAP.md](docs/ROADMAP.md) — Development milestones and long-term vision
 
 ## License

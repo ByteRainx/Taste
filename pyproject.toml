@@ -35,10 +35,10 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/taste"
-Repository = "https://github.com/yourusername/taste"
-Issues = "https://github.com/yourusername/taste/issues"
-Documentation = "https://github.com/yourusername/taste#readme"
+Homepage = "https://github.com/ByteRainx/Taste"
+Repository = "https://github.com/ByteRainx/Taste"
+Issues = "https://github.com/ByteRainx/Taste/issues"
+Documentation = "https://github.com/ByteRainx/Taste#readme"
 
 dependencies = [
     "draccus>=0.9.0",

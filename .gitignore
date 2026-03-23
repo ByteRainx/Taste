@@ -24,3 +24,4 @@ Thumbs.db
 # Project
 *.cache/
 .claude/
+examples/

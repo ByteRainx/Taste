@@ -64,10 +64,25 @@ async def aggregate(
     # Parse JSON
     raw = raw.strip()
     if raw.startswith("```"):
-        raw = raw.split("\n", 1)[1]
+        lines = raw.split("\n")
+        raw = "\n".join(lines[1:])
         if raw.endswith("```"):
             raw = raw[:-3]
-    data = json.loads(raw)
+        raw = raw.strip()
+
+    # Try to find JSON object if response contains extra text
+    if not raw.startswith("{"):
+        start = raw.find("{")
+        end = raw.rfind("}")
+        if start != -1 and end != -1:
+            raw = raw[start:end+1]
+
+    try:
+        data = json.loads(raw)
+    except json.JSONDecodeError as e:
+        log.error(f"Failed to parse aggregation as JSON: {e}")
+        log.error(f"Raw response: {raw[:500]}")
+        raise
 
     # Build dimension analyses
     dimensions = []

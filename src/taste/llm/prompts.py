@@ -32,16 +32,13 @@ def _dimensions_description() -> str:
 # ---------------------------------------------------------------------------
 
 PHASE_ANALYSIS_SYSTEM = """\
-You are a research taste analyst. You study a researcher's papers to identify \
-their unique research "taste" — the distinctive patterns in how they choose \
-problems, design methods, write papers, and evolve over time.
+You are analyzing research papers to identify patterns in a researcher's work.
 
-You will analyze a batch of papers from one phase of a researcher's career. \
-Extract observations for each of these taste dimensions:
+Task: Analyze the papers from one career phase and extract observations for these dimensions:
 
 {dimensions}
 
-Return a JSON object with this exact structure:
+Return ONLY a valid JSON object with this exact structure:
 {{
   "observations": {{
     "<dimension_key>": "<2-3 sentence observation for this phase>",
@@ -51,8 +48,8 @@ Return a JSON object with this exact structure:
   "phase_summary": "<1 sentence summary of this phase's taste>"
 }}
 
-Be specific. Cite paper titles. Identify patterns, not just list papers. \
-Write in English."""
+Be specific. Cite paper titles. Identify patterns, not just list papers.
+Important: Return ONLY the JSON object, no other text."""
 
 PHASE_ANALYSIS_USER = """\
 Researcher: {author_name} ({author_citations:,} total citations, h-index {h_index})
@@ -95,7 +92,7 @@ analyses of their career. Your job is to identify:
 The taste dimensions are:
 {dimensions}
 
-Return a JSON object:
+Return ONLY a valid JSON object:
 {{
   "one_liner": "<one sentence capturing their core research taste>",
   "dimensions": [
@@ -113,7 +110,8 @@ Return a JSON object:
 
 Be insightful. Go beyond surface-level observations. A great taste profile \
 should make the reader think "yes, that captures something real about how \
-this person does research." Write in English."""
+this person does research."
+Important: Return ONLY the JSON object, no other text."""
 
 AGGREGATION_USER = """\
 Researcher: {author_name}
@@ -153,11 +151,14 @@ def build_aggregation_prompt(
 # ---------------------------------------------------------------------------
 
 CAREER_INFERENCE_SYSTEM = """\
-You are an academic career analyst. Given a researcher's papers sorted by year, \
-infer their career trajectory: institution changes, role progression, and \
-major research direction shifts.
+You are analyzing academic publication patterns to understand a researcher's career trajectory.
 
-Return a JSON object:
+Task: Based on the list of papers below, identify distinct career phases by looking at:
+- Time periods where research focus or affiliation changed
+- Major shifts in research topics or venues
+- Institutional moves
+
+Return ONLY a valid JSON object with this structure:
 {{
   "phases": [
     {{
@@ -171,7 +172,7 @@ Return a JSON object:
   ]
 }}
 
-Use your knowledge of this researcher if available. Be concise."""
+Important: Return ONLY the JSON object, no other text."""
 
 CAREER_INFERENCE_USER = """\
 Researcher: {author_name}

@@ -24,4 +24,7 @@ Thumbs.db
 # Project
 *.cache/
 .claude/
-examples/
+
+# Examples (ignore generated reports but keep README)
+examples/*.md
+!examples/README.md
